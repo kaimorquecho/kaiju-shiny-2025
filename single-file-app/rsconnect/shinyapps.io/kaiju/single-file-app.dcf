@@ -1,0 +1,12 @@
+name: single-file-app
+title: single-file-app
+username: kaiju
+account: kaiju
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14005371
+bundleId: 9802028
+url: https://kaiju.shinyapps.io/single-file-app/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
