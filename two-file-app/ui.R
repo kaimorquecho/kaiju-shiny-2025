@@ -6,7 +6,20 @@ ui <- navbarPage(
   tabPanel(title = "About this App",
            
            
-           "background info will go here" # REPLACE THIS WITH CONTENT
+           # intro text fluidrow ---
+             
+           fluidRow(
+             
+             column(1),
+             column(10, includeMarkdown("text/about.md")),
+             column(1)
+             
+           ), # END intro text fluidRow
+            
+          
+           hr(),
+        
+           includeMarkdown("text/footer.md")
            
   ), # END (Page 1) intro tabPanel
   
@@ -45,17 +58,18 @@ ui <- navbarPage(
                                                   no = icon("xmark", lib = "font-awesome")
                                                 ))
                           
-                         ), # end trout sidebarpanel
+                         ), # END trout sidebarpanel
                          
                          mainPanel(
                            
                            # trout scatterplot output 
-                           plotOutput(outputId = "trout_scatterplot_output") # end plotoutput
+                           plotOutput(outputId = "trout_scatterplot_output") %>% # end plotoutput
+                             withSpinner(color = "springgreen2", type = 1)
                            
-                         ) # end trout mainpanel
+                         ) # END trout mainpanel
                          
-                       ) # end trout sidebarlayout
-                       ), # end trout tabPanel
+                       ) # END trout sidebarlayout
+                       ), # END trout tabPanel
               
               # penguin tab panel
               tabPanel( title = "Penguins",
@@ -84,7 +98,8 @@ ui <- navbarPage(
                           # penguin mainPanel
                           mainPanel(
                             
-                            plotOutput(outputId = "flipper_length_histogram_output")
+                            plotOutput(outputId = "flipper_length_histogram_output") %>%
+                              withSpinner(color = "indianred2", type = 4, size = 2 )
                           ) # end penguin mainpanel
                         ) # end penguin sidebarLayout
               ) # END penguin tabPanel

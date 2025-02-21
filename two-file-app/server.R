@@ -2,6 +2,15 @@
 server <- function(input,output){
   
   trout_filtered_df <- reactive({
+    
+    validate(
+      need(length(input$channel_type_input) > 0, 
+           "Please select at least one channel type to visualize data for."),
+      need(length(input$section_input) > 0,
+           "Please select at least one section (clear cut or old growth forest) to visualize data for.")
+    ) # END validate
+    
+    
   
     clean_trout %>% 
       filter(channel_type %in% c(input$channel_type_input)) %>% 
@@ -13,6 +22,14 @@ server <- function(input,output){
   
   # filter for island
   island_df <- reactive({
+    
+    
+    validate(
+      need(length(input$penguin_island_input) > 0,
+           "Please select at least one island to visualize data for."),
+      need(length(input$bin_num_input) > 0,
+           "Please select more than one bin to show your data.")
+    ) # END validate
     
     penguins %>% 
       filter(island %in% c(input$penguin_island_input))
@@ -52,7 +69,12 @@ server <- function(input,output){
     
     
     
-  })
+  },
+  
+  alt = "A scatterplot of the relationship between cutthroat trout lengths (mm) and weights (g). Trout tend to be longer, but weigh less in waterways within the old growth forest. Trout tend to be shorter, but weigh more in waterways within the clear cut forest."
+  
+  
+  )
   
   # render the flipper length histogram
  output$flipper_length_histogram_output <- renderPlot({

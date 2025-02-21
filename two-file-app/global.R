@@ -4,7 +4,8 @@ library(tidyverse)
 library(shinyWidgets) 
 library(lterdatasampler)
 library(palmerpenguins)
-
+library(markdown)
+library(shinycssloaders)
 
 # Create ggplot theme
 myCustomTheme <- function() {
